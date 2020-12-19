@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import MainPage from '@/view/MainPage'
-import Product from '@/view/Product'
+import Products from '@/view/Product'
 import Social from '@/view/Social'
 
 Vue.use(Router)
@@ -14,9 +14,9 @@ export default new Router({
       component: MainPage
     },
     {
-      path: '/product',
-      name: 'Product',
-      component: Product
+      path: '/products',
+      name: 'Products',
+      component: Products
     },
     {
       path: '/social',

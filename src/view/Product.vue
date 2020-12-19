@@ -9,16 +9,17 @@
 import apiService from '../api/api-service';
 export default {
     
-  name: 'Product',
+  name: 'Products',
   data () {
     return {
-      msg: 'Page d\'accueil'
+      products: []
     }
   },
   mounted () {
-      return apiService.getProducts();
+     this.products = apiService.getProducts(to.path);
+    console.log(this.products)   
 
-  }
+  },
 }
 </script>
 

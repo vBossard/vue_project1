@@ -23,7 +23,7 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
           </router-link>
-          <router-link to="/product">
+          <router-link to="/products">
           <v-list-item link>
             <v-list-item-icon>
               <v-icon>mdi-folder</v-icon>
