@@ -1,0 +1,23 @@
+<template>
+  <div>
+      <h1>Social</h1>
+
+     
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Social',
+  data () {
+    return {
+      msg: 'Page d\'accueil'
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+
+</style>
