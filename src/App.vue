@@ -31,7 +31,7 @@
             <v-list-item-title>Product</v-list-item-title>
           </v-list-item>
           </router-link>
-          <router-link to="/social">
+          <router-link to="/users">
           <v-list-item link>
             <v-list-item-icon>
               <v-icon>mdi-account-multiple</v-icon>
@@ -49,6 +49,7 @@
       app
       clipped-left
     >
+    <v-app-bar-nav-icon></v-app-bar-nav-icon>
       <v-toolbar-title>Page title</v-toolbar-title>
 
       <v-spacer></v-spacer>
