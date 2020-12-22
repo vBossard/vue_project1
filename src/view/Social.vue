@@ -9,34 +9,30 @@
       max-width="374"
     >
       <v-img height="125" :src="user.image"></v-img>
-      <v-card-title>{{ user.firstname }}</v-card-title>
+      <v-card-title>{{ user.firstname }} {{ user.lastname }} </v-card-title>
     </v-card>
   </div>
 </template>
 
 <script>
 import apiService from "@/api/api-service";
+import { mapGetters } from 'vuex';
 export default {
   name: "Social",
   data() {
     return {
-      users: null,
+      
     };
   },
-  beforeRouteEnter(to, from, next) {
-    apiService
-      .get(to.path, { params: { quantity: 5 } })
-      .then((res) => {
-        next((vm) => vm.setData(res.data.data));
-      })
-      .catch((error) => {
-        console.error("L'erreur :", error);
-      });
+
+  computed : {
+    ...mapGetters({
+      users : 'users/users'
+    })
   },
-  methods: {
-    setData(users) {
-      this.users = users;
-    },
+
+  mounted() {
+    this.$store.dispatch('users/getUsers');
   },
 };
 </script>
