@@ -1,10 +1,8 @@
 <template>
   <div>
-    <h1>Produit</h1>
-    <h2>Test du store</h2>
-    <p>{{count}}</p>
-    <v-btn elevation="2" v-on:click="changeTest">Changer Nom</v-btn>
-    <v-card
+    <h1>Produits</h1>
+    <v-row>
+      <v-card
       v-for="product in products"
       :key="product.ean"
       elevation="2"
@@ -14,6 +12,7 @@
       <v-img height="125" :src="product.image"></v-img>
       <v-card-title>{{ product.name }}</v-card-title>
     </v-card>
+    </v-row>
   </div>
 </template>
 
@@ -46,8 +45,7 @@ export default {
     // ])
     // pour les getters avc mapGetters avec objet nom custom
     ...mapGetters({
-      products: "stockOkProducts",
-      count:'count'
+      products : 'products/products'
     }),
   },
   // computed : mapState([
@@ -56,8 +54,7 @@ export default {
 
 
   mounted() {
-    this.$store.commit("increment");
-    console.log(this.count);
+    this.$store.dispatch('products/getProducts');
   },
   // Recupère les données avec le router OK
   // beforeRouteEnter(to, from, next) {

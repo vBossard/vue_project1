@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Social</h1>
-    <v-card
+    <v-row><v-card
       v-for="user in users"
       :key="user.uuid"
       elevation="2"
@@ -10,7 +10,8 @@
     >
       <v-img height="125" :src="user.image"></v-img>
       <v-card-title>{{ user.firstname }} {{ user.lastname }} </v-card-title>
-    </v-card>
+    </v-card></v-row>
+    
   </div>
 </template>
 
@@ -30,7 +31,6 @@ export default {
       users : 'users/users'
     })
   },
-
   mounted() {
     this.$store.dispatch('users/getUsers');
   },

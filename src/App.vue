@@ -15,26 +15,26 @@
           nav
           dense
         >
-        <router-link to="/">
+        <router-link tag="span" to="/">
         <v-list-item link>
             <v-list-item-icon>
-              <v-icon>mdi-folder</v-icon>
+              <v-icon>mdi-web</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
           </router-link>
-          <router-link to="/products">
+          <router-link tag="span" to="/products">
           <v-list-item link>
             <v-list-item-icon>
-              <v-icon>mdi-folder</v-icon>
+              <v-icon>mdi-package-variant-closed</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Product</v-list-item-title>
           </v-list-item>
           </router-link>
-          <router-link to="/users">
+          <router-link tag="span" to="/users">
           <v-list-item link>
             <v-list-item-icon>
-              <v-icon>mdi-account-multiple</v-icon>
+              <v-icon>mdi-face</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Social</v-list-item-title>
           </v-list-item>
@@ -49,8 +49,8 @@
       app
       clipped-left
     >
-    <v-app-bar-nav-icon></v-app-bar-nav-icon>
-      <v-toolbar-title>Page title</v-toolbar-title>
+    
+      <v-toolbar-title>Vuex and Axios</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
