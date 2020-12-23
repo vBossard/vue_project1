@@ -25,7 +25,7 @@
                 <form>
                   <v-flex xs12>
                     <v-text-field
-                      v-model="userDetail.lastname"
+                      v-model="form.lastname"
                       name="lastname"
                       id="lastname"
                       label="Nom"
@@ -34,7 +34,7 @@
                   </v-flex>
                   <v-flex xs12>
                     <v-text-field
-                      v-model="userDetail.firstname"
+                      v-model="form.firstname"
                       name="code"
                       id="code"
                       label="Prénom"
@@ -55,7 +55,7 @@
                 <form @keydown.enter.prevent="validate">
                   <v-flex xs12>
                     <v-text-field
-                      v-model="userDetail.username"
+                      v-model="form.username"
                       name="code"
                       id="code"
                       label="Username"
@@ -67,7 +67,7 @@
                   <v-flex xs12>
                     <v-text-field
                       type="password"
-                      v-model="userDetail.password"
+                      v-model="form.password"
                       name="code"
                       id="code"
                       label="Mot de passe"
@@ -134,7 +134,7 @@ export default {
   name: "Detail",
   data() {
     return {
-      form:{},
+      form:null,
       booking: 1,
       valid: true,
       code: "",
@@ -154,18 +154,14 @@ export default {
     };
   },
   computed: {
-    userDetail :  {
-      get () {
+    userDetail () {
         return this.$store.getters["users/getUserById"](this.$route.params.id);
-      },
-      set (value) {
-      this.$store.commit('updateMessage', value)
-    }
     },
   },
   mounted() {
-    //this.form = this.$store.getters["users/getUserById"](this.$route.params.id);
-    //console.log(this.user)
+    //this.form = Object.assign(this.$store.getters["users/getUserById"](this.$route.params.id));
+    this.form = Object.assign({},this.userDetail)
+    console.log(this.form)
   },
 
   methods: {
