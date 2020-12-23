@@ -10,6 +10,7 @@ const state = {
  * Users store
  */
 export default {
+  strict: true,
   namespaced: true,
   state,
   actions,

@@ -10,6 +10,7 @@ const state = {
  * Products store
  */
 export default {
+  strict: true,
   namespaced: true,
   state,
   actions,

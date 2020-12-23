@@ -7,9 +7,11 @@ import vuetify from '@/plugins/vuetify';
 import axios from 'axios'
 import 'es6-promise/auto'
 import store from './store'
+import { ValidationProvider } from 'vee-validate';
 
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;
+Vue.component('ValidationProvider', ValidationProvider);
 
 /* eslint-disable no-new */
 new Vue({

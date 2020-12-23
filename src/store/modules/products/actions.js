@@ -9,6 +9,7 @@ export default {
   async getProducts (context) {
     try{
       Service.get('products',{_quantity : 550}, (response) => {
+        
         context.commit('PRODUCTS_UPDATED', response.data);
       })
     }catch(e){
