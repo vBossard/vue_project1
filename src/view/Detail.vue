@@ -2,7 +2,6 @@
   <div>
     <v-banner
       single-line
-      :sticky="sticky"
     >
       <h2>Profil de l'utilisateur {{userDetail.firstname}}</h2>
 
@@ -60,7 +59,6 @@
                       id="code"
                       label="Username"
                       :counter="12"
-                      v-validate="'required|max:12'"
                       required
                     ></v-text-field>
                   </v-flex>
@@ -72,54 +70,24 @@
                       id="code"
                       label="Mot de passe"
                       :counter="12"
-                      v-validate="'required|max:12'"
                       required
                     ></v-text-field>
                   </v-flex>
-                  <v-btn flat @click.native="booking = 1">Back</v-btn>
+                  <v-btn @click.native="booking = 1">Back</v-btn>
                   <v-btn
                     color="primary"
-                    @click.native="booking = 2"
-                    :disabled="!(code.length === 12)"
+                    @click.native="booking = 3"
                     >Continue</v-btn
                   >
                 </form>
               </v-stepper-content>
-
-              <!-- Stepper 3 -->
-              <v-stepper-step step="3" v-bind:complete="booking > 3"
-                >Pick a time</v-stepper-step
-              >
+              <v-stepper-step step="3">Validation</v-stepper-step>
               <v-stepper-content step="3">
                 <v-flex xs12>
-                  <v-time-picker
-                    v-model="time"
-                    landscape
-                    :allowed-minutes="(value) => value % 15 === 0"
-                  ></v-time-picker>
                 </v-flex>
-                <v-btn flat @click.native="booking = 2">Back</v-btn>
-                <v-btn color="primary" @click.native="booking = 4"
-                  >Continue</v-btn
-                >
-              </v-stepper-content>
-              <v-stepper-step step="4">View setup instructions</v-stepper-step>
-              <v-stepper-content step="4">
-                <v-flex xs12>
-                  <v-select
-                    label="Experience Name"
-                    v-model="experience"
-                    :items="experiences"
-                    item-value="id"
-                    item-text="name"
-                    single-line
-                    bottom
-                    required
-                  ></v-select>
-                </v-flex>
-                <v-btn flat @click.native="booking = 3">Back</v-btn>
-                <v-btn color="primary" @click="submit" :disabled="!experience"
-                  >Create Booking</v-btn
+                <v-btn @click.native="booking = 2">Back</v-btn>
+                <v-btn color="primary" @click="submit"
+                  >Valider</v-btn
                 >
               </v-stepper-content>
             </v-stepper>
@@ -159,13 +127,14 @@ export default {
     },
   },
   mounted() {
-    //this.form = Object.assign(this.$store.getters["users/getUserById"](this.$route.params.id));
     this.form = Object.assign({},this.userDetail)
     console.log(this.form)
   },
 
   methods: {
     submit() {
+      console.log("Validation", this.form)
+      // Ici appeler l'action pour muter le state
       this.$nextTick(() => this.reset());
     },
     reset() {
@@ -177,7 +146,6 @@ export default {
       this.experiences = [];
 
       // Reset error message
-      this.errors.clear();
       this.$validator.reset();
       this.booking = 1;
     },

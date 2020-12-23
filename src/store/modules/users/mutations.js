@@ -7,4 +7,10 @@ export default {
       state.users = users;
     }
   },
+
+  // A faire
+  UPDATE_USER(state,users) {
+    //state.u
+  }
+
 }
