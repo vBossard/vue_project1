@@ -8,11 +8,16 @@ export default {
    */
   async getUsers (context) {
     try{
-      Service.get('users',{_quantity : 50}, (response) => {
-        context.commit('USERS_UPDATED', response.data);
+      Service.get('',{results : 150}, (response) => {
+        console.log(response.results)
+        context.commit('USERS_UPDATED', response.results.filter(user => user.id.value));
       })
     }catch(e){
       console.error(e)
     }
   },
+
+  async updateUser(context, user){
+    await context.commit('UPDATE_USER',user);
+  }
 };

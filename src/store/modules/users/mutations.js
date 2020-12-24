@@ -3,14 +3,14 @@ export default {
   USERS_UPDATED (state, users) {
     //state.users = users;
     if(state.users.length === 0){
-      console.log("Mise à jour des uses")
       state.users = users;
     }
   },
 
   // A faire
-  UPDATE_USER(state,users) {
-    //state.u
+  UPDATE_USER(state,user) {
+    const updatedState = state.users.map(u => u.id.value === user.id.value ? {...user} : u)
+    state.users = updatedState;
   }
 
 }

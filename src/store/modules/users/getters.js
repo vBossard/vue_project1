@@ -22,7 +22,8 @@ export default  {
 
 
    getUserById : (state) => (id) => {
-      return state.users.find(u => u.uuid === id)
+      console.log("LE detail : ", state.users.find(u => u.id.value === id))
+      return state.users.find(u => u.id.value === id)
    }
    
 

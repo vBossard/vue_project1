@@ -1,36 +1,53 @@
 <template>
-  <div>
-    <h1>Social</h1>
-    <v-row
-      ><v-card
-        v-for="user in users"
-        :key="user.uuid"
-        elevation="2"
-        class="mx-auto my-12"
-        max-width="374"
-        :to="{name: 'detail', params : {id : user.uuid}}"
-      >
-        <v-icon large>mdi-account-circle</v-icon>
-        <v-card-title>{{ user.firstname }} {{ user.lastname }} </v-card-title>
-      </v-card></v-row
-    >
-  </div>
+  <v-container class="grey lighten-4">
+    <v-subheader><h1>Utilisateurs</h1></v-subheader>
+    <v-container>
+      <v-row>
+        <v-col
+          v-for="user in users"
+          :key="user.uuid"
+          class="d-flex justify-center mb-12"
+        >
+          <v-card
+            elevation="2"
+            min-width="374"
+            :to="{ name: 'detail', params: { id: user.id.value } }"
+          >
+            <v-card-title>
+              <v-avatar style="margin-right:20px">
+                <img
+                  :src="user.picture.thumbnail"
+                  alt="John"
+                />
+              </v-avatar>
+              {{ user.name.first }} {{ user.name.last }}
+            </v-card-title>
+            <v-card-actions>
+              <v-btn color="deep-purple lighten-2" text> Voir </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-container>
 </template>
 
 <script>
 import apiService from "@/api/api-service";
 import { mapGetters } from "vuex";
-import store from '@/store/modules/users'
+import store from "@/store/modules/users";
 export default {
   name: "Social",
   data() {
-    return {};
+    return {
+      page: 1,
+    };
   },
 
   computed: {
     ...mapGetters({
-      users : 'users/getUsersList'
-    })
+      users: "users/getUsersList",
+    }),
   },
   // mounted() {
   //   //console.log(this.$router)
@@ -39,8 +56,8 @@ export default {
 
   // Calling the update action before route enter
   beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.$store.dispatch('users/getUsers');
+    next((vm) => {
+      vm.$store.dispatch("users/getUsers");
     });
   },
 };

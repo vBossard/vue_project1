@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const HTTP = axios.create({
-    baseURL: `https://fakerapi.it/api/v1/`,
+    baseURL: `https://randomuser.me/api/`,
     timeout: 1000,
     headers: {
       //Authorization: 'Bearer {token}'
